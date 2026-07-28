@@ -1,0 +1,11 @@
+<h2>Student Profile</h2>
+<p>Name: Aditi Rao</p>
+<p>GPA: 3.8</p>
+
+<h3>Enrolled Courses</h3>
+<ul *ngIf="enrolledCourses.length; else none">
+  <li *ngFor="let course of enrolledCourses">{{ course.name }} ({{ course.code }})</li>
+</ul>
+<ng-template #none>
+  <p>You are not enrolled in any courses yet.</p>
+</ng-template>

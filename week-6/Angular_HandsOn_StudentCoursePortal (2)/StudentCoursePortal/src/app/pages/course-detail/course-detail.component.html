@@ -1,0 +1,13 @@
+<a routerLink="/courses">&larr; Back to Courses</a>
+
+<div *ngIf="course; else loadingOrError">
+  <h2>{{ course.name }}</h2>
+  <p>Code: {{ course.code }}</p>
+  <p>Credits: {{ course.credits }}</p>
+  <p>Status: {{ course.gradeStatus }}</p>
+</div>
+
+<ng-template #loadingOrError>
+  <p *ngIf="errorMessage" class="error-text">{{ errorMessage }}</p>
+  <p *ngIf="!errorMessage">Loading course...</p>
+</ng-template>

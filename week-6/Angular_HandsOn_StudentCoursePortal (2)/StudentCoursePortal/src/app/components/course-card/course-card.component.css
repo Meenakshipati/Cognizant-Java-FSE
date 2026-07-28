@@ -1,0 +1,51 @@
+.card {
+  border: 1px solid #ddd;
+  border-left: 4px solid grey;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background: #fff;
+  transition: max-height 0.2s ease;
+}
+
+.card--enrolled {
+  background: #eef7ee;
+}
+
+.card--full {
+  box-shadow: 0 0 0 1px #f0ad4e inset;
+}
+
+.card.expanded {
+  padding-bottom: 1.5rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.badge--passed {
+  background: #2e7d32;
+}
+
+.badge--failed {
+  background: #d32f2f;
+}
+
+.badge--pending {
+  background: #757575;
+}
+
+.actions {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.secondary {
+  background: #607d8b;
+}

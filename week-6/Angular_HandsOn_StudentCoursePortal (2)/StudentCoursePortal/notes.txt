@@ -1,0 +1,53 @@
+Hands-On 1 - Task 1: Notes on generated project files
+=======================================================
+
+angular.json
+  Workspace configuration file. Defines projects, build/serve/test targets,
+  file paths (index.html, main.ts, styles), asset lists, and build budgets.
+  This is what `ng build` / `ng serve` / `ng test` read to know how to run.
+
+tsconfig.json
+  The base TypeScript compiler configuration shared by the whole workspace
+  (strict mode flags, target ECMAScript version, module resolution, and the
+  angularCompilerOptions block used by the Angular compiler/template checker).
+
+tsconfig.app.json
+  Extends tsconfig.json specifically for the browser application build. Points
+  at src/main.ts as the entry file and excludes spec files from the app build.
+
+package.json
+  Lists npm dependencies (Angular packages, RxJS, NgRx, zone.js) and
+  devDependencies (Angular CLI, build tooling, Karma/Jasmine), plus npm
+  scripts (start, build, test) used to run common CLI commands.
+
+src/main.ts
+  The application entry point. Bootstraps the root standalone component
+  (AppComponent) using bootstrapApplication() and supplies the application
+  config (providers for router, HttpClient, Store, etc.).
+
+src/app/app.config.ts
+  Standalone Angular's replacement for AppModule. Registers root-level
+  providers: the router, HttpClient (with interceptors), the NgRx store,
+  effects, and store devtools.
+
+src/app/app.component.ts
+  The root component of the application. Its template hosts <app-header>
+  and <router-outlet>, so every routed page renders inside it.
+
+src/index.html
+  The single HTML page served to the browser. Contains the <app-root></app-root>
+  element where Angular bootstraps the application, plus the page <title>
+  and viewport meta tags.
+
+Notes on ng build / ng serve / budgets
+=======================================
+- `ng serve` compiles the app in memory and serves it with live reload at
+  http://localhost:4200 - nothing is written to disk.
+- `ng build` compiles and bundles the application into the dist/student-course-portal
+  folder. The compiled application code lives in the hashed main-*.js /
+  polyfills-*.js / styles-*.css chunk files, referenced from index.html.
+- In angular.json, architect > build > configurations > production > budgets
+  sets maximumWarning and maximumError thresholds on bundle size (e.g. initial
+  bundle maximumWarning: 500kb, maximumError: 1mb). If the production bundle
+  exceeds the warning threshold the build logs a warning; if it exceeds the
+  error threshold the build fails. This keeps the shipped bundle size in check.
